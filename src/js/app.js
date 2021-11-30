@@ -1,14 +1,7 @@
-import Read from './reader';
-import json from './parser';
+import GameSavingLoader from './gameSavingLoader';
 
-export default class GameSavingLoader {
-  static async load() {
-    try {
-      const response = await Read();
-      const data = await json(response);
-      return JSON.parse(data);
-    } catch (err) {
-      return err;
-    }
-  }
-}
+GameSavingLoader.load().then((saving) => {
+  console.log(saving);
+}, (error) => {
+  console.log(error);
+});
